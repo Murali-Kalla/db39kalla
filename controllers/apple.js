@@ -1,9 +1,17 @@
 var apple = require('../models/apple'); 
  
-// List of all apples 
-exports.apple_list = function(req, res) { 
-    res.send('NOT IMPLEMENTED: apple list'); 
-}; 
+// List of all apple 
+
+exports.apple_list = async function(req, res) { 
+    try{ 
+        theapple = await apple.find(); 
+        res.send(theapple); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+};
  
 // for a specific apple. 
 exports.apple_detail = function(req, res) { 
