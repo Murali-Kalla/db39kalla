@@ -60,10 +60,18 @@ exports.apple_view_all_Page = async function(req, res) {
     }   
 };
  
-// Handle apple delete form on DELETE. 
-exports.apple_delete = function(req, res) { 
-    res.send('NOT IMPLEMENTED: apple delete DELETE ' + req.params.id); 
-}; 
+// Handle apple delete on DELETE. 
+exports.apple_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await apple.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+};
  
 // Handle apple update form on PUT. 
 exports.apple_update_put = async function(req, res) { 
