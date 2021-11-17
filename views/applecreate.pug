@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  h1= title
+
+  form(id='appleForm', action="/resource/apple", method="POST")
+    div.form-group
+        label.appleAttr(for='apple_type') apple type
+        input#apple_type(type='text', name='apple_type')
+    div.form-group
+        label.appleAttr(for='quantity') apple quantity 
+        input#quantity(type='number', name='quantity')
+    div.form-group
+        label.appleAttr(for='cost') apple cost 
+        input#cost(type='number', name='cost')
+    input(type="submit")
+
+  script.
+    document.forms['appleForm'].addEventListener('submit', (event) => {
+      event.preventDefault();
+      // TODO do something here to show user that form is being submitted
+      fetch(event.target.action, {
+        method: 'POST',
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+      }).then((resp) => {
+        return resp.json(); // or resp.text() or whatever the server sends
+      }).then((body) => {
+        alert("Save succeded")
+        // TODO handle body
+      }).catch((error) => {
+        // TODO handle error
+        alert("Save failed " + error )
+      });
+    });
