@@ -14,4 +14,11 @@ a {
   padding: 8px;
   margin: 5px;
   flex-wrap: nowrap;
+  border-radius: 5px;
+}
+
+.Title{
+  color:goldenrod;
+  font-weight: 500;
+  font-family: 'Times New Roman', Times, serif;
 }

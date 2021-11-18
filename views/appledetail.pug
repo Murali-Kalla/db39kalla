@@ -1,7 +1,10 @@
 extends layout
 
 block content
-  h1=title
+  h1= title
+   if (toShow == null)
+    h2 No instance to Update
+   else
     - let appleid = toShow._id   
     - let apple_type = toShow.apple_type
     - let quantity  = toShow.quantity 
