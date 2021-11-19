@@ -2,9 +2,22 @@ extends layout
 
 block content
   h1= title
-  p Welcome to the WebApps Assignment-10
+  p Welcome to the page #{title}
+  p I like Reading books 
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/apple") Take me to apple
+    br
+    a(href="/logout") Logout
+  br
+  br
   button(type='button',onclick='update()',class='btn btn-primary') Press Me
-  
+  br
+  br 
   div(id="target") text of Display 
 
   script.
