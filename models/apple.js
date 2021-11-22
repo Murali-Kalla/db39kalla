@@ -4,7 +4,7 @@ const appleSchema = mongoose.Schema({
 apple_type:{
     type: String,
     minLength: 3,
-    maxLength: 100
+    maxLength: 10
 },
 
 quantity : {
@@ -14,7 +14,7 @@ quantity : {
 cost: {
     type:Number,
     min:1,
-    max:500
+    max:250
 }
 })
 module.exports = mongoose.model("apple",appleSchema)

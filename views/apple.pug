@@ -1,7 +1,9 @@
 extends layout
 
 block content
-  h1= title
+  - let destinations1 = `dispatch(\"/apple/create\")` 
+   button.btn( class="btn-primary m-1", onclick= destinations1) Create
+  h1= title 
   - let apple = results;
   script.
     function buy(x){
@@ -11,8 +13,14 @@ block content
     div(class='row m-1')
       each m, index in apple 
        - let destination = `dispatch(\"/apple/update?id=${m._id}\")`
+       - let destinations2 = `dispatch(\"/apple/detail?id=${m._id}\")`
+       - let destinations3 = `dispatch(\"/apple/delete?id=${m._id}\")`
+
        div(class="row-sm-2", class="m-1") Item #{m.apple_type}(#{m.quantity}) is #{m.cost}
         button.btn( class="btn-primary ml-1", onclick= destination) Update
+        button.btn( class="btn-success m-1", onclick= destinations2) Detail
+        button.btn( class="btn-danger m-1", onclick= destinations3) Delete
+
 
   script. 
     function dispatch(path){ 
