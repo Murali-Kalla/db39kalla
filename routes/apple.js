@@ -17,12 +17,12 @@ const secured = (req, res, next) => {
     res.redirect("/login"); 
   } 
 /* GET create apple page */ 
-router.get('/create', apple_controlers.apple_create_Page)
+router.get('/create',secured, apple_controlers.apple_create_Page)
 
 /* GET create update page */ 
 router.get('/update',secured, apple_controlers.apple_update_Page);
 
 /* GET create apple page */ 
-router.get('/delete', apple_controlers.apple_delete_Page); 
+router.get('/delete',secured, apple_controlers.apple_delete_Page); 
 
 module.exports = router;
